@@ -103,7 +103,9 @@ describe RecurringMoment do
             recurrence = RecurringMoment.new(period: period, interval: interval, start: start)
             expect(recurrence.match(start.advance(weeks: 5))).to eq true
             expect(recurrence.match(start.advance(weeks: 10))).to eq true
+###############################################################################################################
             expect(recurrence.match(start.advance(weeks: 50))).to eq true
+
             expect(recurrence.match(start.advance(days: 1))).to eq false
             expect(recurrence.match(start.advance(months: 2))).to eq false
             expect(recurrence.match(start.advance(weeks: 7))).to eq false
@@ -123,6 +125,7 @@ describe RecurringMoment do
           it "correctly matches a one month interval from #{start.strftime('%D')}" do
             recurrence = RecurringMoment.new(period: period, interval: interval, start: start)
             expect(recurrence.match(start.advance(months: 1))).to eq true
+            ###########################################################################################
             expect(recurrence.match(start.advance(months: 3))).to eq true
             expect(recurrence.match(start.advance(months: 6))).to eq true
             expect(recurrence.match(start.advance(days: 6))).to eq false
@@ -137,8 +140,10 @@ describe RecurringMoment do
           it "correctly matches a two month interval from #{start.strftime('%D')}" do
             recurrence = RecurringMoment.new(period: period, interval: interval, start: start)
             expect(recurrence.match(start.advance(months: 2))).to eq true
+            ########################################################################################
             expect(recurrence.match(start.advance(months: 4))).to eq true
             expect(recurrence.match(start.advance(months: 12))).to eq true
+
             expect(recurrence.match(start.advance(days: 6))).to eq false
             expect(recurrence.match(start.advance(months: 1))).to eq false
             expect(recurrence.match(start.advance(months: 7))).to eq false
@@ -153,8 +158,10 @@ describe RecurringMoment do
           it "correctly matches a five month interval from #{start.strftime('%D')}" do
             recurrence = RecurringMoment.new(period: period, interval: interval, start: start)
             expect(recurrence.match(start.advance(months: 5))).to eq true
+##################################################################################################
             expect(recurrence.match(start.advance(months: 10))).to eq true
             expect(recurrence.match(start.advance(months: 50))).to eq true
+
             expect(recurrence.match(start.advance(days: 1))).to eq false
             expect(recurrence.match(start.advance(months: 2))).to eq false
             expect(recurrence.match(start.advance(months: 7))).to eq false
@@ -170,7 +177,9 @@ describe RecurringMoment do
         period = 'daily'
         interval = 10
         recurrence = RecurringMoment.new(start: start, period: period, interval: interval)
-        expect(recurrence.match(start.advance(days: 1000 * 10))).to eq true
+        #######################################################################
+        expect(recurrence.match(start.advance(days: 1000 * 10))).to eq true 
+
         expect(recurrence.match(start.advance(days: 1000 * 10 + 1))).to eq false
       end
 
@@ -179,7 +188,9 @@ describe RecurringMoment do
         period = 'weekly'
         interval = 10
         recurrence = RecurringMoment.new(start: start, period: period, interval: interval)
+        ################################################################################
         expect(recurrence.match(start.advance(weeks: 1000 * 10))).to eq true
+
         expect(recurrence.match(start.advance(weeks: 1000 * 10 + 1))).to eq false
       end
 
@@ -188,7 +199,9 @@ describe RecurringMoment do
         period = 'monthly'
         interval = 10
         recurrence = RecurringMoment.new(start: start, period: period, interval: interval)
+###########################################
         expect(recurrence.match(start.advance(months: 1000 * 10))).to eq true
+
         expect(recurrence.match(start.advance(months: 1000 * 10 + 1))).to eq false
       end
     end

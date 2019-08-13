@@ -1,7 +1,11 @@
 require 'active_support'
 require 'active_support/core_ext'
+require 'pry'
 
 class RecurringMoment
+
+  attr_accessor :start, :interval, :period
+
   def initialize(start:, interval:, period:)
     @start = start
     @interval = interval
@@ -11,15 +15,15 @@ class RecurringMoment
   def match(date)
     current = @start
 
-    while current < date
+    while current < Time.now
       if current == date
         return true
       end
-
+      binding.pry
       if @period == 'monthly'
-        current = current.advance(weeks: @interval)
-      elsif @period = 'weekly'
         current = current.advance(months: @interval)
+      elsif @period == 'weekly'
+        current = current.advance(weeks: @interval)
       elsif @period == 'daily'
         current = current.advance(days: @interval)
       end
